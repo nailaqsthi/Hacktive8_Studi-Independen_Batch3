@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Failure Prediction</title>
+</head>
+
+<body>
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="{{ url_for('static', filename='img/diagnosis.png') }}" alt="rocket_contact" />
+        </div>
+        <form action="{{ url_for('predict')}}" method="post">
+            <h3>Heart Failure Prediction</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" name="age" class="form-control" placeholder="age" value="" required="required`" />
+                    </div>
+                    <div class="form-group">
+                        <label>Anaemia</label>
+                        <br>
+                        <select name="anaemia" id="anaemia">
+                            <option value="-">Pilih</option>
+                            <option value="1">Ada pengurangan haemoglobin</option>
+                            <option value="0">Tidak ada pengurangan haemoglobin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Creatinine Phosphokinase</label>
+                        <input type="text" name="creatinine_phosphokinase" class="form-control" placeholder="creatinine_phosphokinase" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>Diabetes</label>
+                        <br>
+                        <select name="diabetes" id="diabetes">
+                            <option value="-">Pilih</option>
+                            <option value="1">Ada riwayat diabetes</option>
+                            <option value="0">Tidak ada riwayat diabetes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ejection Fraction</label>
+                        <input type="text" name="ejection_fraction" class="form-control" placeholder="ejection_fraction" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>High Blood Pressure</label>
+                        <br>
+                        <select name="high_blood_pressure" id="high_blood_pressure">
+                            <option value="-">Pilih</option>
+                            <option value="1">Ada darah tinggi</option>
+                            <option value="0">Tidak ada darah tinggi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Platelets</label>
+                        <input type="text" name="platelets" class="form-control" placeholder="platelets" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>Serum Creatinine</label>
+                        <input type="text" name="serum_creatinine" class="form-control" placeholder="serum_creatinine" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>Serum Sodium</label>
+                        <input type="text" name="serum_sodium" class="form-control" placeholder="serum_sodium" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <br>
+                        <select name="sex" id="sex">
+                            <option value="-">Pilih</option>
+                            <option value="1">Perempuan</option>
+                            <option value="0">Laki-laki</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Smoking</label>
+                        <br>
+                        <select name="smoking" id="smoking">
+                            <option value="-">Pilih</option>
+                            <option value="1">Merokok</option>
+                            <option value="0">Tidak merokok</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="text" name="time" class="form-control" placeholder="time" value="" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btnContact">Prediction</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Result : <br> {{ prediction_text }}</h3>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
