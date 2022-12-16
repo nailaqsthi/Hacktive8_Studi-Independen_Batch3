@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cab Fare Prediction Model</title>
+</head>
+
+<body>
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="{{ url_for('static', filename='img/cab.png') }}" alt="rocket_contact" />
+        </div>
+        <form action="{{ url_for('predict')}}" method="post">
+            <h3>Cab Fare Prediction</h3>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label>Destinasi Awal</label>
+                        <br>
+                        <select name="source" id="source">
+                            <option value="-">Pilih</option>
+                            <option value="0">Haymarket Square</option>
+                            <option value="1">Back Bay</option>
+                            <option value="2">North End</option>
+                            <option value="3">North Station</option>
+                            <option value="4">Beacon Hill</option>
+                            <option value="5">Boston University</option>
+                            <option value="6">Fenway</option>
+                            <option value="7">South Station</option>
+                            <option value="8">Theatre District</option>
+                            <option value="9">West End</option>
+                            <option value="10">Financial District</option>
+                            <option value="11">Northeastern University</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Destinasi Akhir</label>
+                        <br>
+                        <select name="destination" id="destination">
+                            <option value="-">Pilih</option>
+                            <option value="0">North Station</option>
+                            <option value="1">Northeastern University</option>
+                            <option value="2">West End</option>
+                            <option value="3">Haymarket Square</option>
+                            <option value="4">South Station</option>
+                            <option value="5">Fenway</option>
+                            <option value="6">Theatre District</option>
+                            <option value="7">Beacon Hill</option>
+                            <option value="8">Back Bay</option>
+                            <option value="9">North End</option>
+                            <option value="10">Financial District</option>
+                            <option value="11">Boston University</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Jasa Transportasi</label>
+                        <br>
+                        <select name="cab_type" id="cab_type">
+                            <option value="-">Pilih</option>
+                            <option value="1">Lyft</option>
+                            <option value="0">Uber</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Layanan</label>
+                        <br>
+                        <select name="name" id="name">
+                            <option value="-">Pilih</option>
+                            <option value="0">Shared</option>
+                            <option value="1">Lux</option>
+                            <option value="2">Lyft</option>
+                            <option value="3">Lux Black XL</option>
+                            <option value="4">Lyft XL</option>
+                            <option value="5">Lux Black</option>
+                            <option value="6">UberXL</option>
+                            <option value="7">Black</option>
+                            <option value="8">UberX</option>
+                            <option value="9">WAV</option>
+                            <option value="10">Black SUV</option>
+                            <option value="11">UberPool</option>
+                            <option value="12">Taxi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Jarak yang ditempuh</label>
+                        <input type="text" name="distance" class="form-control" placeholder="distance" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>Surge Multiplier</label>
+                        <input type="text" name="surge_multiplier" class="form-control" placeholder="surge_multiplier" value="" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Cuaca</label>
+                        <br>
+                        <select name="short_summary" id="short_summary">
+                            <option value="-">Pilih</option>
+                            <option value="0">Mostly Cloudy</option>
+                            <option value="1">Rain</option>
+                            <option value="2">Clear</option>
+                            <option value="3">Partly Cloudy</option>
+                            <option value="4">Overcast</option>
+                            <option value="5">Light Rain</option>
+                            <option value="6">Foggy</option>
+                            <option value="7">Possible Drizzle</option>
+                            <option value="8">Drizzle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btnContact">Prediction</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Price : {{ prediction_text }}</h4>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
